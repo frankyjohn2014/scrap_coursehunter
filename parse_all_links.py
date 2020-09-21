@@ -3,6 +3,7 @@ import requests
 import lxml
 import codecs
 
+
 urls = []
 
 def get_html(site):
