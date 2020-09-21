@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import lxml
 import codecs
-
+import time
 
 urls = []
 
@@ -29,12 +29,17 @@ def get_page_data(html):                         #sources
 def main():
     url = 'https://coursehunter.net/archive'
     get_page_data(get_html(url))
-    try:
-        for i in range(2,500):
+    i = 1
+    while True:
+        try:
+            print(i)
+            time.sleep(5)
             url_next = 'https://coursehunter.net/archive?page={0}'.format(i)
             get_page_data(get_html(url_next))
-    except:
-        print('Links is all')
+            i += 1
+        except:
+            print('range is all')
+            break
 
 if __name__ == '__main__':
         main()
